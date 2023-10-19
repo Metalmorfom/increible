@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="resources/css/registro.css">
+  <title>Register</title>
+</head>
+
+<body>
+  <div class="register-form">
+    <h1>Form Registration</h1>
+    <form action="/register" method="POST">
+      <div class="form-grid">
+
+        <div class="column">
+          <label for="rut">RUT</label>
+          <input type="text" name="rut" required tabindex="1" autofocus>
+
+          <label for="clave">Password</label>
+          <input type="password" name="clave" required tabindex="2" value="asd123">
+
+          <label for="nombre">First Name</label>
+          <input type="text" name="nombre" required tabindex="3" value="gadomen">
+          <label for="s_nombre">Second Name</label>
+          <input type="text" name="s_nombre" tabindex="4" value="thegado">
+
+          <label for="ap_paterno">Last Name</label>
+          <input type="text" name="paterno" required tabindex="5" value="briones">
+          <label for="ap_materno">Mother's Last Name</label>
+          <input type="text" name="materno" required tabindex="6" value="aravena">
+
+          <label for="direccion">Address</label>
+          <input type="text" name="direccion" required tabindex="7" value="yacimiento">
+        </div>
+
+
+        <div class="column">
+
+
+          <label for="correo">Email</label>
+          <input type="email" name="correo" required tabindex="8" value="elincreiblecorreo@hotmail.com">
+
+          <label for="telefono">Phone Number</label>
+          <input type="text" name="telefono" required tabindex="9" value="920102534">
+
+          <label for="profesion">Profession</label>
+          <input type="text" name="profesion" required tabindex="10" value="ing informatico">
+
+
+          <label for="fecha_expiracion">Expiration Date</label>
+          <input type="date" name="fecha_expiracion" required tabindex="12" value="2023-10-20">
+
+          <label for="activa">Active</label>
+          <input type="text" name="state" required tabindex="13" value="S">
+
+
+
+
+          <label for="rol_id_rol">Rol Cuenta</label>
+          <select name="rol" required tabindex="10">
+            <% for (var i=0; i < rol.length; i++) { %>
+              <option value="<%= rol[i].id_rol %>">
+                <%= rol[i].rol %>
+              </option>
+              <% } %>
+          </select>
+          <label for="junta_vecinal_id_junta">Cuenta junta_vecinal</label>
+          <select name="junta_vecinal" required tabindex="15">
+            <% for (var i=0; i < junta_vecinal.length; i++) { %>
+              <option value="<%= junta_vecinal[i].id_junta %>">
+                <%= junta_vecinal[i].nombre %>
+              </option>
+              <% } %>
+          </select>
+        </div>
+
+
+
+
+      </div>
+
+      <div class="column btn-container">
+        <a href="/" class="btn-cancel">Cancel</a>
+        <input type="submit" class="btn-save" value="Save">
+      </div>
+  </div>
+  </form>
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+  <% if (typeof alert !="undefined" ) { %>
+    <script>
+      Swal.fire({
+        title: '<%= alertTitle %>',
+        text: '<%= alertMessage %>',
+        icon: '<%= alertIcon %>',
+        showConfirmButton: <%= showConfirmButton %>,
+        timer: <%= timer %>
+ }).then(() => {
+          window.location = '/<%= ruta %>'
+        })
+    </script>
+    <% } %>
+      </div>
+</body>
+
+</html>

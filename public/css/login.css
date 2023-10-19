@@ -1,0 +1,107 @@
+body{
+    font-family: 'Roboto';  
+    background-color: blue;
+    margin: auto;
+    text-align: center;
+  }
+  
+  /* Login form */
+  .login-form, .contenedor {
+    width: 300px;
+    margin: 0 auto;
+    
+  }
+  .login-form h1 {
+    text-align: center;
+    color:yellow ;
+    font-size: 28px;
+    padding: 70px 0 10px 0;
+  }
+  .login-form h3{
+    text-align: left;
+    color: yellow;
+  }
+  .login-form input[type="password"],
+  .login-form input[type="text"] {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #ced4da;
+    margin-bottom: 10px;
+    box-sizing:border-box;
+    border-radius:  1px;
+  }
+  
+  /* Estilos boton LOGIN*/
+  .btn-login{
+    width: 100%;
+    padding: 15px;
+    background-color: #6f42c1;
+    border: 0;
+    box-sizing: border-box;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: large;
+    color: #ffffff;
+  }
+  .btn-login:hover,.btn-login:active{
+    color:#fff;
+    background-color:#61428f;
+    border-color:#61428f
+  }
+  .btn-login:focus{
+    box-shadow:0 0 0 3px rgba(121,82,179,0.25)
+  }
+  
+  /* Estilos boton REGISTER*/
+  .btn-register{
+    width: 100%;
+    padding: 15px;
+    background-color: #34D399;
+    border: 0;
+    box-sizing: border-box;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: large;
+    color: #ffffff;
+    margin-top: 20px;
+    /* Para dar la apariencia de un boton */
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+    text-decoration: none;  
+  }
+  .btn-register:hover,.btn-register:active{
+    color:#fff;
+    background-color: #10B981;
+    border-color:#10B981
+  ;
+  }
+  .btn-register:focus{
+    box-shadow:0 0 0 3px #10B981;
+  }
+  
+  
+
+/* Estilos de link para ir a LOGIN*/
+.a-login:link, .a-login:visited {
+    background-color: white;
+    color: black;
+    border: 2px solid #10B981;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+  }
+  
+  .a-login:hover, .a-login:active {
+    background-color: #10B981;
+    color: white;
+  }
+
+
+  /* Ajusta el tamaño y el color del icono */
+i.fa.fa-user {
+    font-size: 18px;
+    color: #333; /* Color deseado */
+  }
+i{color: #333;}
