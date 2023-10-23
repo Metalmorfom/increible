@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing web</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="resources/css/index.css">
+
+</head>
+<body>
+
+    <header class="header" id="header">
+
+        <a href="/" class="logo">JuntaApp</a>    <% if (login) { %>
+          <div class="user-menu">
+            <p class="nombre"><%= userId %></p>
+            <div class="menu-content">
+              <!-- Contenido del menú aquí -->
+              <a href="logout" class="a-logout">Logout</a>
+            </div>
+          </div>
+        <% } %>
+
+        <nav class="navbar">
+          <% if (login) { %>
+            <a href="/logout">Cerrar Sesión</a>
+        <% } else { %>
+            <a href="/login">Conectarse</a>
+        <% } %>
+            <a href="/noticias">Noticias</a>
+            <a href="#solicitudes">solicitudes</a>
+            <a href="#proyectos">proyectos</a>
+            <a href="#Calendario">Calendario</a>
+            <a href="#Mensajes">Mensajes</a>
+            
+         
+              
+            
+        </nav>
+
+        <div id="menu-btn" class="fas fa-bars"></div>
+    </header>
+
+
+    
+
+
+
+
+
+    <script src="resources/css/index.js"></script>
+</body>
+</html>

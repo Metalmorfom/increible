@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing web</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="resources/css/index.css">
+
+</head>
+
+<body>
+
+    <%- include('header_menu.ejs') %>
+
+
+
+        <section class="services" id="services">
+
+            <h1 class="heading"> our <span>services</span> </h1>
+
+            <div class="box-container">
+
+
+                   
+                    
+
+                      <div class="news-form">
+                        <h2>Publicar Noticia</h2>
+                        <form id="news-form" action="/noticias" method="POST">
+                            <h3> </h3>
+                          <input type="text" name="titulo"  id="news-title" placeholder="Título de la noticia">
+                          <textarea name="descripcion" id="news-content" placeholder="Descripción de la noticia"></textarea>
+                          
+                          <button type="submit">Publicar </button>
+                        
+                        </form>
+
+                        <% noticias.forEach(function(noticia) { %>
+                            <div class="news-item">
+                              <h3><%= noticia.nombre_completo %>: <%= noticia.titulo %></h3>
+                              <p></p>
+                              <p><%= noticia.descripcion %></p>
+                              <p><%= noticia.fecha_public.toLocaleString('es-ES', { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' }) %></p>
+                              <p><%= noticia.id_muro %> </p>
+                              <button class="editar-button" data-article-id="11" data-article-title="11" data-article-content="dd111">Editar</button>
+
+
+                            </div>
+                          <% }); %>
+                          
+
+<!-- Dentro del mismo archivo HTML news.ejs o donde prefieras -->
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <span class="close" id="close-modal">&times;</span>
+        <h2>Editar Noticia</h2>
+        <form id="edit-news-form" action="/editar-noticia" method="post">
+            
+            <input type="text" name="titulo" id="modal-news-title" placeholder="Título de la noticia">
+            <textarea name="descripcion" id="modal-news-content" placeholder="Descripción de la noticia"></textarea>
+            <button type="submit" id="save-changes">Guardar Cambios</button>
+
+        </form>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    
+                      
+                      
+                        <script>
+                            function formatDate(dateString) {
+                                const options = { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' };
+                              return new Date(dateString).toLocaleDateString(undefined, options);
+                            }
+                          </script>
+                      <script src="script.js"></script>
+
+
+
+
+
+
+
+
+
+
+       
+                <!-- about section end -->
+
+
+                <script>
+                 document.addEventListener('DOMContentLoaded', function () {
+    const modal = document.getElementById('modal');
+    const closeButton = document.getElementById('close-modal');
+    const editarButtons = document.querySelectorAll('.editar-button');
+    const modalNewsTitle = document.getElementById('modal-news-title');
+    const modalNewsContent = document.getElementById('modal-news-content');
+    const saveChangesButton = document.getElementById('save-changes');
+
+    let currentArticleId = null;
+
+    // Función para abrir el modal y cargar los detalles de la noticia
+    function openEditModal(articleId, title, content) {
+        currentArticleId = articleId;
+        modal.style.display = 'block';
+        modalNewsTitle.value = title;
+        modalNewsContent.value = content;
+    }
+
+    // Función para cerrar el modal
+    function closeEditModal() {
+        modal.style.display = 'none';
+    }
+
+    // Agregar manejadores de eventos para los botones "Editar"
+    editarButtons.forEach(button => {
+        button.addEventListener('click', function () {
+            currentArticleId = button.getAttribute('data-article-id');
+            const title = button.getAttribute('data-article-title');
+            const content = button.getAttribute('data-article-content');
+            openEditModal(currentArticleId, title, content);
+        });
+    });
+
+    closeButton.addEventListener('click', closeEditModal);
+
+    saveChangesButton.addEventListener('click', function () {
+        if (currentArticleId) {
+            const newTitle = modalNewsTitle.value;
+            const newContent = modalNewsContent.value;
+
+            // Aquí debes implementar la lógica para guardar los cambios en la base de datos.
+            // Envía `currentArticleId`, `newTitle` y `newContent` al servidor para la actualización.
+        }
+
+        closeEditModal();
+    });
+});
+
+fetch('/editar-noticia', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+        articleId: articleId,
+        titulo: newTitle,
+        descripcion: newContent,
+    }),
+})
+
+
+console.log('articleId:', articleId); // Agrega esta línea para depurar
+fetch('/editar-noticia', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+        articleId: articleId,
+        titulo: newTitle,
+        descripcion: newContent,
+    }),
+})
+
+
+
+
+
+
+                    </script>
+                    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <script src="resources/css/index.js"></script>
+</body>
+
+</html>
